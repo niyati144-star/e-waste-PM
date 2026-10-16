@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Waste Lifecycle Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ LOGIN VIEW ============ -->
+<div id="login-view">
+  <div class="login-left">
+    <div class="illustration">
+      <i data-lucide="recycle" style="width:96px;height:96px;color:#6EE7B7;"></i>
+    </div>
+    <h1>Track. Reuse. Recycle.</h1>
+    <p>Smart electronic waste lifecycle management.</p>
+    <div class="badges">
+      <span><i data-lucide="laptop" style="width:14px;height:14px;"></i> Laptops</span>
+      <span><i data-lucide="monitor" style="width:14px;height:14px;"></i> Monitors</span>
+      <span><i data-lucide="smartphone" style="width:14px;height:14px;"></i> Mobiles</span>
+      <span><i data-lucide="qr-code" style="width:14px;height:14px;"></i> QR Tracked</span>
+    </div>
+  </div>
+  <div class="login-right">
+    <div class="login-box">
+      <div class="login-logo">
+        <div class="mark"><i data-lucide="recycle" style="width:22px;height:22px;"></i></div>
+        <div><b>E-WASTE TRACKER</b><span>Lifecycle Management System</span></div>
+      </div>
+      <h2>Welcome back</h2>
+      <div class="sub">Sign in to manage your electronic assets.</div>
+      <form id="login-form">
+        <div class="field">
+          <label>Username</label>
+          <div class="input-wrap"><i data-lucide="user" style="width:16px;height:16px;"></i>
+            <input type="text" id="login-username" placeholder="admin" required>
+          </div>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <div class="input-wrap"><i data-lucide="lock" style="width:16px;height:16px;"></i>
+            <input type="password" id="login-password" placeholder="••••••••" required>
+          </div>
+        </div>
+        <div class="row-between">
+          <label class="checkbox-row"><input type="checkbox" checked> Remember me</label>
+          <a href="#" class="link-green" id="forgot-link">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+      </form>
+      <div class="demo-hint"><i data-lucide="info" style="width:13px;height:13px;display:inline;vertical-align:-2px;"></i> Prototype demo — any username and password will sign you in.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ APP SHELL ============ -->
+<div id="app-shell" class="hidden">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><i data-lucide="recycle" class="mark" style="width:22px;height:22px;"></i><b>E-WASTE TRACKER</b></div>
+    <nav>
+      <a class="nav-item" data-nav="dashboard"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+      <a class="nav-item" data-nav="assets"><i data-lucide="boxes"></i> Assets</a>
+      <a class="nav-item" data-nav="add-asset"><i data-lucide="plus-square"></i> Add Asset</a>
+      <a class="nav-item" data-nav="scanner"><i data-lucide="scan-line"></i> QR Scanner</a>
+      <a class="nav-item" data-nav="lifecycle"><i data-lucide="git-branch"></i> Lifecycle</a>
+      <a class="nav-item" data-nav="reports"><i data-lucide="bar-chart-3"></i> Reports</a>
+      <a class="nav-item" data-nav="settings"><i data-lucide="settings"></i> Settings</a>
+    </nav>
+    <div class="spacer"></div>
+    <div class="logout">
+      <a class="nav-item" id="logout-btn"><i data-lucide="log-out"></i> Logout</a>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="icon-btn menu-toggle" id="menu-toggle-btn"><i data-lucide="menu"></i></button>
+        <div class="page-title" id="page-title">Dashboard</div>
+      </div>
+      <div class="right">
+        <div class="search"><i data-lucide="search" style="width:15px;height:15px;"></i><input placeholder="Search assets, IDs..." id="global-search"></div>
+        <button class="icon-btn"><i data-lucide="bell" style="width:17px;height:17px;"></i><span class="dot"></span></button>
+        <div class="profile-chip">
+          <div class="avatar" id="profile-avatar">A</div>
+          <div><div class="name" id="profile-name-chip">Admin</div><div class="role" id="profile-role-chip">Administrator</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="page" id="page-content"></div>
+  </div>
+</div>
+
+<div id="modal-root"></div>
+<script src="script.js"></script>
+</body>
+</html>
